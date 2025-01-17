@@ -1,0 +1,30 @@
+# Sistema
+*.DS_Store
+*.pyc
+__pycache__/
+
+# Ambiente Virtual
+venv/
+env/
+
+# Configurações e Arquivos Locais
+*.sqlite3
+db.sqlite3
+*.log
+.env
+
+# Diretório de Arquivos Estáticos e Carregados
+staticfiles/
+media/
+
+# Arquivos Django Migrations
+*/migrations/*
+
+# Arquivos específicos de Editor/IDE
+.idea/
+.vscode/
+*.swp
+
+# Arquivos relacionados ao Deploy (exemplo com Heroku)
+*.env
+Procfile

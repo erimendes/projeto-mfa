@@ -1,0 +1,47 @@
+<!-- accounts/mfa_verify.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifique o código de autenticação</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Adicionando um pouco de estilo para melhorar o layout */
+        .qr-code {
+            max-width: 200px;
+            margin: 20px 0;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Escaneie o QR Code com seu app de autenticação</h2>
+
+    <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code" class="qr-code">
+    
+    <form method="POST" action="{% url 'mfa_verify' %}">
+        {% csrf_token %}
+        <div>
+            <label for="mfa_code">Código de Autenticação:</label>
+            <input type="text" name="mfa_code" id="mfa_code" required>
+        </div>
+        <button type="submit">Verificar Código</button>
+    </form>
+    
+    {% if error %}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
