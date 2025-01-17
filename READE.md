@@ -26,3 +26,13 @@ python manage.py createsuperuser
 python manage.py runserver
 
 pip freeze > requirements.txt
+
+python manage.py shell
+
+.tables
+
+SELECT * FROM minha_aplicacao_userprofile;
+
+SELECT * FROM auth_user WHERE id = 1;
+
+
