@@ -31,6 +31,7 @@
     
     <form method="POST" action="{% url 'mfa_verify' %}">
         {% csrf_token %}
+        <input type="hidden" name="user_id" value="{{ user_id }}">
         <div>
             <label for="mfa_code">Código de Autenticação:</label>
             <input type="text" name="mfa_code" id="mfa_code" required>

@@ -1,7 +1,0 @@
-/* Tamanho do QR Code */
-.qr-code {
-    width: 200px;  /* Ajuste o tamanho conforme necessário */
-    height: 200px; /* Ajuste o tamanho conforme necessário */
-    margin: 20px auto; /* Centraliza a imagem */
-    /* display: block; */
-}

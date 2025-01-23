@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Sobremesas{% endblock %}
+
+{% block content %}
+<h1>Lista de Sobremesas</h1>
+
+<ul style="list-style-type: none; padding: 0;">
+    {% for sobremesa in sobremesas %}
+        <li style="margin-bottom: 20px; border: 1px solid #ddd; padding: 15px; border-radius: 8px;">
+            <h3>{{ sobremesa.nome }}</h3>
+            <p><strong>Descrição:</strong> {{ sobremesa.descricao }}</p>
+            <p><strong>Preço:</strong> R$ {{ sobremesa.preco }}</p>
+            {% if sobremesa.imagem %}
+                <p>Imagem salva em: {{ sobremesa.imagem.url }}</p>
+                <img src="{{ sobremesa.imagem.url }}" alt="{{ sobremesa.nome }}">
+            {% else %}
+                <p><em>Sem imagem disponível</em></p>
+            {% endif %}
+        
+        </li>
+    {% empty %}
+        <p>Nenhuma sobremesa cadastrada ainda.</p>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'adicionar_sobremesa' %}" class="btn btn-primary mt-3">Adicionar Sobremesa</a>
+{% endblock %}

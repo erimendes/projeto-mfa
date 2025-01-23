@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %} <!-- Adicione isso para carregar a biblioteca de tags estáticas -->
+
+{% block title %}Sobre{% endblock %}
+
+{% block content %}
+<h1>Sobre Nós</h1>
+<img src="{% static 'images/sobre.jpg' %}" alt="Imagem sobre nós">
+<p>Bem-vindo à nossa página de sobre!</p>
+{% endblock %}

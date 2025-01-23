@@ -6,3 +6,5 @@ pyotp==2.9.0
 qrcode==8.0
 sqlparse==0.5.3
 pymongo
+psycopg2-binary
+

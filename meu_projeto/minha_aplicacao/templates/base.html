@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Meu Projeto{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li>
+                    <a href="{% url 'menu' %}">Cardápio</a>
+                    <ul>
+                        <li><a href="{% url 'item1' %}">Pratos Principais</a></li>
+                        <li><a href="{% url 'bebidas' %}">Bebidas</a></li>
+                        <li><a href="{% url 'sobremesas' %}">Sobre</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'about' %}">Sobre</a></li>
+                <li><a href="{% url 'contact' %}">Contato</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logado' %}">Minha Conta</a></li>
+                    <li>
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-btn">Sair</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Layout principal -->
+    <div class="layout">
+        <!-- Submenu condicional -->
+        {% if request.resolver_match.url_name in 'menu' or request.resolver_match.url_name in 'item1' or request.resolver_match.url_name in 'bebidas' or request.resolver_match.url_name in 'sobremesas' %}
+        <aside class="submenu">
+            {% block submenu %}
+            <ul>
+                <li><a href="{% url 'item1' %}">Pratos Principais</a></li>
+                <li><a href="{% url 'bebidas' %}">Bebidas</a></li>
+                <li><a href="{% url 'sobremesas' %}">Sobre</a></li>
+            </ul>
+            {% endblock %}
+        </aside>
+        {% endif %}
+
+        <!-- Conteúdo principal -->
+        <section class="main-content">
+            {% block content %}
+            <p>Bem-vindo ao meu site!</p>
+            {% endblock %}
+        </section>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 Meu Projeto. Todos os direitos reservados.</p>
+    </footer>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

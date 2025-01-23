@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Cardápio{% endblock %}
+
+{% block submenu %}
+<ul>
+    <li><a href="{% url 'item1' %}">Pratos Principais</a></li>
+    <li><a href="{% url 'bebidas' %}">Bebidas</a></li>
+    <li><a href="{% url 'sobremesas' %}">Sobremesas</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo ao Cardápio</h1>
+<p>Escolha uma categoria no menu ao lado.</p>
+{% endblock %}

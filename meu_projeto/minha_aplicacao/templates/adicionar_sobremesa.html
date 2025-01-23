@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Sobremesa{% endblock %}
+
+{% block content %}
+<h1>Adicionar Sobremesa</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required><br>
+    
+    <label for="descricao">Descrição:</label>
+    <textarea id="descricao" name="descricao" required></textarea><br>
+    
+    <label for="preco">Preço:</label>
+    <input type="number" id="preco" name="preco" step="0.01" required><br>
+    
+    <label for="imagem">Imagem:</label>
+    <input type="file" id="imagem" name="imagem" accept="image/*"><br>
+    
+    <button type="submit">Adicionar</button>
+</form>
+{% endblock %}

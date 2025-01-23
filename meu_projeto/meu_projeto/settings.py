@@ -85,12 +85,12 @@ WSGI_APPLICATION = 'meu_projeto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'nome_do_banco',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017',  # Endereço do seu servidor MongoDB
-        },
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'aplicacao_api',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -134,6 +134,8 @@ STATIC_URL = '/static/'
 # Opcional: Adicione o diretório de arquivos estáticos para desenvolvimento
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # A pasta static no diretório raiz do projeto
+    BASE_DIR / "media",  # A pasta static no diretório raiz do projeto
+    BASE_DIR / "sobremesas",  # A pasta static no diretório raiz do projeto
 ]
 
 # Default primary key field type
@@ -141,4 +143,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
